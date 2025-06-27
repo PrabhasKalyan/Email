@@ -50,8 +50,8 @@ sender_password = "ejcj iurw hmio ghia"
 
 
 
-attachment_path = "/Users/prabhaskalyan/Downloads/CV_May.pdf"
-contacts_path = "/Users/prabhaskalyan/Downloads/Copy of Sept - Oct 2024 - CEO Contacts.csv"
+attachment_path = "IITKGP_CV__Template___Copy_ (1).pdf"
+contacts_path = "Copy of Sept - Oct 2024 - CEO Contacts.csv"
 
 
 contacts = pd.read_csv(contacts_path, on_bad_lines='skip')
