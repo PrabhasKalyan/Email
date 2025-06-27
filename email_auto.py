@@ -57,9 +57,10 @@ contacts_path = "Copy of Sept - Oct 2024 - CEO Contacts.csv"
 contacts = pd.read_csv(contacts_path, on_bad_lines='skip')
 def main():
     try:
-        with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        with smtplib.SMTP('smtp-relay.brevo.com', 587) as server:
             server.starttls()
-            server.login(sender_email, sender_password)
+            # server.login(sender_email, sender_password)
+            server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
             for index, row in contacts.iterrows():
                 name = row['First Name']
                 email = row['Email']
