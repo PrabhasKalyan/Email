@@ -54,7 +54,7 @@ password = "iahd nsjk mrxb zhtq"
 
 
 attachment_path = "IITKGP_CV__Template___Copy_ (1).pdf"
-contacts_path = "Copy of Sept - Oct 2024 - CEO Contacts.csv"
+contacts_path = "April - May 2024 - CEO Contacts.csv"
 
 
 contacts = pd.read_csv(contacts_path, on_bad_lines='skip')
@@ -63,16 +63,13 @@ def main():
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
             server.login(sender_email, password)
-            # server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
-            # for index, row in contacts.iterrows():
-            #     name = row['First Name']
-            #     email = row['Email']
-            #     send_email(sender_email, email, name, server, attachment_path)
-            #     time.sleep(15)
-            emails = ["subbarajumudhiveti62@gmail.com","prabhasmudhiveti@gmail.com","subbarajumadaveti6@gmail.com","prabhas.mudhiveti.ecelliitkgp@gmail.com","prabhaskalyan@kgpian.iitkgp.ac.in","subbarajumadeviti6@gmail.com","prabhas.kalyan@ecell-iitkgp.org","webvventures@gmail.com"]
-            for email in emails:
-                send_email(sender_email, email, server, attachment_path)
+            server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
+            for index, row in contacts.iterrows():
+                name = row['First Name']
+                email = row['Email']
+                send_email(sender_email, email, name, server, attachment_path)
                 time.sleep(15)
+            time.sleep(15)
     except Exception as e:
         print(f"🚫 SMTP connection failed: {e}")
 
