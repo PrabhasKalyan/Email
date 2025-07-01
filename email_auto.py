@@ -42,14 +42,14 @@ Prabhas Kalyan
         print(f"❌ Failed to send email to {recipient_email}: {e}")
 
 
-sender_email = "prabhakalyan0473@gmail.com"
-sender_password = "eqqj rdap boix lxhh"
+# sender_email = "prabhakalyan0473@gmail.com"
+# password = "eqqj rdap boix lxhh"
 
 sender_email = "prabhas.kalyan@ecell-iitkgp.org"
 password = "iahd nsjk mrxb zhtq"
 
 # sender_email = "prabhasmudhiveti@gmail.com"
-# sender_password = "ejcj iurw hmio ghia" 
+# password = "ejcj iurw hmio ghia" 
 
 
 
@@ -62,7 +62,7 @@ def main():
     try:
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
-            server.login(sender_email, sender_password)
+            server.login(sender_email, password)
             # server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
             # for index, row in contacts.iterrows():
             #     name = row['First Name']
