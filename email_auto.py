@@ -5,11 +5,11 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 import time
 
-def send_email(sender_email, recipient_email, name, server, attachment_path):
+def send_email(sender_email, recipient_email, server, attachment_path):
     subject = "Seeking Referral for SDE/AI Internship Roles"
 
     body = f"""
-Dear {name},
+Dear P,
 
 I am a third-year B.S. Physics student at IIT Kharagpur with a strong background in AI and software development, seeking an opportunity to contribute to your team. My recent work at Filo involved building an AI pipeline to generate scalable, high-quality tutorial videos, combining NLP, TTS, and video automation.
 
@@ -37,16 +37,19 @@ Prabhas Kalyan
 
     try:
         server.send_message(message)
-        print(f"✅ Email sent successfully to {name} ({recipient_email})")
+        print(f"✅ Email sent successfully to P ({recipient_email})")
     except Exception as e:
         print(f"❌ Failed to send email to {recipient_email}: {e}")
 
 
-# sender_email = "prabhakalyan0473@gmail.com"
-# sender_password = "eqqj rdap boix lxhh"
+sender_email = "prabhakalyan0473@gmail.com"
+sender_password = "eqqj rdap boix lxhh"
 
-sender_email = "prabhasmudhiveti@gmail.com"
-sender_password = "ejcj iurw hmio ghia" 
+sender_email = "prabhas.kalyan@ecell-iitkgp.org"
+password = "iahd nsjk mrxb zhtq"
+
+# sender_email = "prabhasmudhiveti@gmail.com"
+# sender_password = "ejcj iurw hmio ghia" 
 
 
 
@@ -57,16 +60,19 @@ contacts_path = "Copy of Sept - Oct 2024 - CEO Contacts.csv"
 contacts = pd.read_csv(contacts_path, on_bad_lines='skip')
 def main():
     try:
-        with smtplib.SMTP('smtp-relay.brevo.com', 587) as server:
+        with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
-            # server.login(sender_email, sender_password)
-            server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
-            for index, row in contacts.iterrows():
-                name = row['First Name']
-                email = row['Email']
-                send_email(sender_email, email, name, server, attachment_path)
+            server.login(sender_email, sender_password)
+            # server.login("909963001@smtp-brevo.com", "GkF2CwVYqascfOJE")
+            # for index, row in contacts.iterrows():
+            #     name = row['First Name']
+            #     email = row['Email']
+            #     send_email(sender_email, email, name, server, attachment_path)
+            #     time.sleep(15)
+            emails = ["subbarajumudhiveti62@gmail.com","prabhasmudhiveti@gmail.com","subbarajumadaveti6@gmail.com","prabhas.mudhiveti.ecelliitkgp@gmail.com","prabhaskalyan@kgpian.iitkgp.ac.in","subbarajumadeviti6@gmail.com","prabhas.kalyan@ecell-iitkgp.org","webvventures@gmail.com"]
+            for email in emails:
+                send_email(sender_email, email, server, attachment_path)
                 time.sleep(15)
-                    
     except Exception as e:
         print(f"🚫 SMTP connection failed: {e}")
 
