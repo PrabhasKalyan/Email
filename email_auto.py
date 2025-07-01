@@ -5,7 +5,7 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 import time
 
-def send_email(sender_email, name,recipient_email, server, attachment_path):
+def send_email(sender_email,recipient_email, name, server, attachment_path):
     subject = "Seeking Referral for SDE/AI Internship Roles"
 
     body = f"""
