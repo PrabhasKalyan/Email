@@ -5,11 +5,11 @@ from email.mime.application import MIMEApplication
 import pandas as pd
 import time
 
-def send_email(sender_email, recipient_email, server, attachment_path):
+def send_email(sender_email, name,recipient_email, server, attachment_path):
     subject = "Seeking Referral for SDE/AI Internship Roles"
 
     body = f"""
-Dear P,
+Dear {name},
 
 I am a third-year B.S. Physics student at IIT Kharagpur with a strong background in AI and software development, seeking an opportunity to contribute to your team. My recent work at Filo involved building an AI pipeline to generate scalable, high-quality tutorial videos, combining NLP, TTS, and video automation.
 
