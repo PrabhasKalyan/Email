@@ -24,4 +24,6 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run email script
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: python email_auto.py
