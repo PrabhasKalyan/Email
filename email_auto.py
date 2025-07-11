@@ -10,8 +10,8 @@ import time
 
 load_dotenv()  # Load .env file for GROQ_API_KEY
 
-groq_api_key = os.getenv("GROQ_API_KEY")
-client = Groq(api_key="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")
+groq_api_key = "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"
+client = Groq(api_key=groq_api_key)
 
 # Resume summary from your PDF
 resume_summary = """
