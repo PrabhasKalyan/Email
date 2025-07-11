@@ -84,7 +84,7 @@ def main():
 
                 body = generate_email_body(name, company, company_desc)
                 print(body)
-                # send_email(sender_email, email, name, server, attachment_path, body)
+                send_email(sender_email, email, name, server, attachment_path, body)
                 time.sleep(10)  # polite delay
     except Exception as e:
         print(f"🚫 SMTP error: {e}")
