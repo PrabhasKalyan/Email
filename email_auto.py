@@ -20,22 +20,47 @@ Prabhas is a third-year B.S. Physics student at IIT Kharagpur. He's interned at 
 
 def generate_email_body(name, company, company_desc):
     prompt = f"""
+You must respond with ONLY the email body text. Do not include any introductory phrases, explanations, or extra text.
+
 Write a concise and professional email to {name} requesting a referral for an internship role (SDE/AI) at {company}.
 Mention your background and align with {company}'s focus: {company_desc}.
 Resume summary:
 {resume_summary}
-Max 200 words and dont give subject and only mail and nothing else as I will be sending this directly
+Max 200 words.
 
-
-
-Strictly dont give any extra like here is proffessional email. Just start with Email only and nothing else
+Response format: Start directly with "Hi {name}," or "Dear {name}," - no other text before or after.
 """
 
     response = client.chat.completions.create(
         model="llama3-8b-8192",
-        messages=[{"role": "user", "content": prompt}]
+        messages=[
+            {"role": "system", "content": "You are an email writer. Respond only with the email body text, no additional commentary or formatting."},
+            {"role": "user", "content": prompt}
+        ]
     )
-    return response.choices[0].message.content.strip()
+    
+    # Clean up the response to remove common unwanted prefixes
+    content = response.choices[0].message.content.strip()
+    
+    # Remove common unwanted prefixes
+    unwanted_prefixes = [
+        "Here is a professional email:",
+        "Here's a professional email:",
+        "Here is the email:",
+        "Here's the email:",
+        "Professional email:",
+        "Email:",
+        "Here is a concise email:",
+        "Here's a concise email:"
+    ]
+    
+    for prefix in unwanted_prefixes:
+        if content.startswith(prefix):
+            content = content[len(prefix):].strip()
+    
+    return content
+
+
 
 def send_email(sender_email, recipient_email, name, server, attachment_path, body):
     subject = "Seeking Referral for SDE/AI Internship Roles"
@@ -70,7 +95,7 @@ def main():
     # sender_email = "prabhasmudhiveti@gmail.com"
     # password = "ejcj iurw hmio ghia" 
 
-    attachment_path = "CV_June.pdf"
+    attachment_path = "IITKGP_CV__Template___Copy_ (1).pdf"
     contacts_path = "April - May 2024 - CEO Contacts.csv"  # Should have First Name, Email, Company, Description columns
 
     contacts = pd.read_csv(contacts_path)
@@ -89,7 +114,7 @@ def main():
                 body = generate_email_body(name, company, company_desc)
                 print(body)
                 send_email(sender_email, email, name, server, attachment_path, body)
-                time.sleep(10)  # polite delay
+                # time.sleep(10)  # polite delay
     except Exception as e:
         print(f"🚫 SMTP error: {e}")
 
