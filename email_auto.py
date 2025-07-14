@@ -25,6 +25,10 @@ Mention your background and align with {company}'s focus: {company_desc}.
 Resume summary:
 {resume_summary}
 Max 200 words and dont give subject and only mail and nothing else as I will be sending this directly
+
+
+
+Strictly dont give any extra like here is proffessional email. Just start with Email only and nothing else
 """
 
     response = client.chat.completions.create(
