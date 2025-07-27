@@ -99,11 +99,11 @@ def send_email(sender_email, recipient_email, name, server, attachment_path, bod
         print(f"❌ Failed to send email to {recipient_email}: {e}")
 
 def main():
-    sender_email = "prabhakalyan0473@gmail.com"
-    password = "eqqj rdap boix lxhh"
+    # sender_email = "prabhakalyan0473@gmail.com"
+    # password = "eqqj rdap boix lxhh"
 
-    # sender_email = "prabhas.kalyan@ecell-iitkgp.org"
-    # password = "iahd nsjk mrxb zhtq"
+    sender_email = "prabhas.kalyan@ecell-iitkgp.org"
+    password = "iahd nsjk mrxb zhtq"
 
     # sender_email = "prabhasmudhiveti@gmail.com"
     # password = "ejcj iurw hmio ghia" 
