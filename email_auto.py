@@ -7,6 +7,7 @@ from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from dotenv import load_dotenv
 import time
+import random
 
 load_dotenv()  # Load .env file for GROQ_API_KEY
 
