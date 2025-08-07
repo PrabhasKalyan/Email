@@ -127,7 +127,7 @@ def main():
                 message['Subject'] = subject
                 body = generate_email_body(name, company)
                 send_email(sender_email, email, name, server, attachment_path, body)
-                 time.sleep(random.randint(60, 300))
+                time.sleep(random.randint(60, 300))
     except Exception as e:
         print(f"🚫 SMTP error: {e}")
 
