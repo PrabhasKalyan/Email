@@ -75,8 +75,8 @@ Prabhas Kalyan
 """
 
 
-def send_email(sender_email, recipient_email, name, server, attachment_path, body):
-    subject = "Seeking Referral for SDE/AI Internship Roles"
+def send_email(sender_email, recipient_email, name, server, attachment_path, body,company):
+    subject = f"Seeking Referral for SDE/AI Internship Roles at {company}"
     
     message = MIMEMultipart()
     message['From'] = sender_email
@@ -123,10 +123,8 @@ def main():
                 email = row['Email']
                 company = row.get('Company', '')
                 company_desc = row.get('Description', '')
-                subject = f"Interested in Contributing as an SDE/AI Intern at {company}"
-                message['Subject'] = subject
                 body = generate_email_body(name, company)
-                send_email(sender_email, email, name, server, attachment_path, body)
+                send_email(sender_email, email, name, server, attachment_path, body,company)
                 time.sleep(random.randint(60, 300))
     except Exception as e:
         print(f"🚫 SMTP error: {e}")
