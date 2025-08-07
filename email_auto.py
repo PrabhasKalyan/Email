@@ -102,14 +102,14 @@ def main():
     # sender_email = "prabhakalyan0473@gmail.com"
     # password = "eqqj rdap boix lxhh"
 
-    sender_email = "prabhas.kalyan@ecell-iitkgp.org"
-    password = "iahd nsjk mrxb zhtq"
+    # sender_email = "prabhas.kalyan@ecell-iitkgp.org"
+    # password = "iahd nsjk mrxb zhtq"
 
-    # sender_email = "prabhasmudhiveti@gmail.com"
-    # password = "ejcj iurw hmio ghia" 
+    sender_email = "prabhasmudhiveti@gmail.com"
+    password = "ejcj iurw hmio ghia" 
 
     attachment_path = "IITKGP_CV__Template___Copy_ (1).pdf"
-    contacts_path = "April - May 2024 - CEO Contacts.csv"  # Should have First Name, Email, Company, Description columns
+    contacts_path = "April - May 2024 - CEO Contacts.csv"
 
     contacts = pd.read_csv(contacts_path)
     
@@ -123,11 +123,11 @@ def main():
                 email = row['Email']
                 company = row.get('Company', '')
                 company_desc = row.get('Description', '')
-
+                subject = f"Interested in Contributing as an SDE/AI Intern at {company}"
+                message['Subject'] = subject
                 body = generate_email_body(name, company)
-                print(body)
                 send_email(sender_email, email, name, server, attachment_path, body)
-                # time.sleep(10)  # polite delay
+                 time.sleep(random.randint(60, 300))
     except Exception as e:
         print(f"🚫 SMTP error: {e}")
 
